@@ -36,13 +36,13 @@ Repositório colaborativo do Grupo para desenvolvimento, versionamento e entrega
 
 ## 🏛️ Modelo Relacional do Projeto (SQLite)
 
-O banco de dados relacional foi construído via processo *bottom-up* em **3ª Forma Normal (3FN)** a partir do conjunto de dados aberto do IBAMA (`auto_infracao_2026.csv`), totalizando **37.456 instâncias** distribuídas em:
+O banco de dados relacional foi construído via processo *bottom-up* em **3ª Forma Normal (3FN)** a partir do conjunto de dados aberto do IBAMA (`auto_infracao_2026.csv`), totalizando **36.218 instâncias** distribuídas em:
 
 1. **`Municipio` (1.674 instâncias):** `cod_municipio` (PK IBGE), `nome_municipio`, `uf`.
-2. **`Infrator` (10.534 instâncias):** `id_infrator` (PK surrogate), `nome_infrator`, `tipo_pessoa` (PF/PJ), `cpf_cnpj`.
+2. **`Infrator` (9.858 instâncias):** `id_infrator` (PK surrogate), `nome_infrator`, `tipo_pessoa` (PF/PJ), `cpf_cnpj`.
 3. **`Ordem_Fiscalizacao` (872 instâncias):** `codigo_ordem` (PK), `unidade_ordenadora`, `nome_operacao`.
 4. **`Tipo_Infracao` (23 instâncias):** `id_tipo` (PK surrogate), `cod_infracao`, `descricao_infracao`, `tipo_infracao`.
-5. **`Autuado_Em` (10.734 instâncias - Relacionamento M:N):** Chave composta (`id_infrator`, `codigo_ordem`). Modela as ordens fiscais e operações especiais em que cada infrator foi autuado.
+5. **`Autuado_Em` (10.172 instâncias - Relacionamento M:N):** Chave composta (`id_infrator`, `codigo_ordem`). Modela as ordens fiscais e operações especiais em que cada infrator foi autuado.
 6. **`Auto_Infracao` (13.619 instâncias):** `num_auto_infracao` (PK), `data_hora`, `valor_multa`, `tipo_auto`, `descricao_fato`, `forma_entrega`, `local`, `bioma`, `unidade_controle`, `latitude`, `longitude` e as Chaves Estrangeiras (`id_infrator`, `cod_municipio`, `id_tipo`, `codigo_ordem`).
 
 ---
